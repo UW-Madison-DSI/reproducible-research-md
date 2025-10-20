@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="ppt_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ppt_files/libs/quarto-html/tabby.min.js"></script>
+<script src="ppt_files/libs/quarto-html/popper.min.js"></script>
+<script src="ppt_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="ppt_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ppt_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="ppt_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="ppt_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <meta name="author" content="Maria Oros">
+  <title>Reproducible Research</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="ppt_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="ppt_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="ppt_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="ppt_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="ppt_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="ppt_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="ppt_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="ppt_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="ppt_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="ppt_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="ppt_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="ppt_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
+  <link href="ppt_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <script src="ppt_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="ppt_files/libs/plotly-binding-4.11.0/plotly.js"></script>
+  <script src="ppt_files/libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="ppt_files/libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="ppt_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+  <script src="ppt_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+  <link href="ppt_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="ppt_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Reproducible Research</h1>
+  <p class="subtitle">Quarto and MyST Markdown</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Maria Oros 
+</div>
+</div>
+</div>
+
+</section>
+<section id="what-is-reproducible-research" class="slide level2 smaller">
+<h2>What is Reproducible Research?</h2>
+<p>The ability to recreate scientific findings using:</p>
+<div>
+<ul>
+<li class="fragment">Original data</li>
+<li class="fragment">Original code and analysis scripts</li>
+<li class="fragment">Documentation of computational environment</li>
+<li class="fragment">Clear methodology and workflow</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Reproducibility is fundamental to the scientific method</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-reproducibility-matters" class="slide level2">
+<h2>Why Reproducibility Matters</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Credibility</strong></p>
+<ul>
+<li>Builds trust in findings</li>
+<li>Enables verification</li>
+</ul>
+<p><strong>Efficiency</strong></p>
+<ul>
+<li>Saves time later</li>
+<li>Facilitates updates</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Collaboration</strong></p>
+<ul>
+<li>Others can build on work</li>
+<li>Easier knowledge transfer</li>
+</ul>
+<p><strong>Transparency</strong></p>
+<ul>
+<li>Clear methods</li>
+<li>Visible decisions</li>
+</ul>
+</div></div>
+</section>
+<section id="what-is-quarto" class="slide level2">
+<h2>What is Quarto?</h2>
+<blockquote>
+<p>Next-generation scientific publishing system</p>
+</blockquote>
+<ul>
+<li>Successor to R Markdown</li>
+<li><strong>Language-agnostic</strong>: R, Python, Julia, Observable</li>
+<li>Multiple output formats: HTML, PDF, Word, presentations</li>
+<li>Built-in support for citations and cross-references</li>
+<li>Developed by Posit</li>
+</ul>
+</section>
+<section id="quarto-example-r" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Quarto Example: R</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb1-1" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2" class="hljs-ln-code"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb1-4" class="hljs-ln-code"><a href=""></a><span class="co"># Load data</span></span>
+<span id="cb1-5" class="hljs-ln-code"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">y =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb1-6" class="hljs-ln-code"><a href=""></a></span>
+<span id="cb1-7" class="hljs-ln-code"><a href=""></a><span class="co"># Create plot</span></span>
+<span id="cb1-8" class="hljs-ln-code"><a href=""></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb1-9" class="hljs-ln-code"><a href=""></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Quadratic Growth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="live-r-code-base-graphics" class="slide level2">
+<h2>Live R Code: Base Graphics</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Generate data</span></span>
+<span id="cb2-2"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb2-3"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb2-4"><a href=""></a></span>
+<span id="cb2-5"><a href=""></a><span class="co"># Create plot</span></span>
+<span id="cb2-6"><a href=""></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb2-7"><a href=""></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb2-8"><a href=""></a>     <span class="at">main =</span> <span class="st">"Sine Wave"</span>,</span>
+<span id="cb2-9"><a href=""></a>     <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"sin(x)"</span>)</span>
+<span id="cb2-10"><a href=""></a><span class="fu">grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ppt_files/figure-revealjs/unnamed-chunk-1-1.png" width="768" class="r-stretch"></section>
+<section id="quarto-example-ggplot2" class="slide level2">
+<h2>Quarto Example: ggplot2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="co"># Create sample data</span></span>
+<span id="cb3-4"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb3-5"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-6"><a href=""></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb3-7"><a href=""></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb3-8"><a href=""></a>)</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a><span class="co"># Create plot with ggplot2</span></span>
+<span id="cb3-11"><a href=""></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb3-12"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href=""></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Random Data Visualization"</span>,</span>
+<span id="cb3-16"><a href=""></a>       <span class="at">x =</span> <span class="st">"Index"</span>, <span class="at">y =</span> <span class="st">"Value"</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href=""></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ppt_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="interactive-plot-with-plotly" class="slide level2">
+<h2>Interactive Plot with plotly</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(plotly)</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a><span class="co"># Create sample data</span></span>
+<span id="cb4-4"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-5"><a href=""></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>,</span>
+<span id="cb4-6"><a href=""></a>  <span class="at">y =</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>))</span>
+<span id="cb4-7"><a href=""></a>)</span>
+<span id="cb4-8"><a href=""></a></span>
+<span id="cb4-9"><a href=""></a><span class="co"># Create interactive plot</span></span>
+<span id="cb4-10"><a href=""></a><span class="fu">plot_ly</span>(data, <span class="at">x =</span> <span class="sc">~</span>x, <span class="at">y =</span> <span class="sc">~</span>y, <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'lines+markers'</span>,</span>
+<span id="cb4-11"><a href=""></a>        <span class="at">line =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">'rgb(55, 128, 191)'</span>, <span class="at">width =</span> <span class="dv">2</span>),</span>
+<span id="cb4-12"><a href=""></a>        <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">'rgb(219, 64, 82)'</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href=""></a>  <span class="fu">layout</span>(<span class="at">title =</span> <span class="st">"Interactive Random Walk"</span>,</span>
+<span id="cb4-14"><a href=""></a>         <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Step"</span>),</span>
+<span id="cb4-15"><a href=""></a>         <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Value"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-521fcff53b1c506bc878" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-521fcff53b1c506bc878">{"x":{"visdat":{"112d664ce7be":["function () ","plotlyVisDat"]},"cur_data":"112d664ce7be","attrs":{"112d664ce7be":{"x":{},"y":{},"mode":"lines+markers","line":{"color":"rgb(55, 128, 191)","width":2},"marker":{"size":6,"color":"rgb(219, 64, 82)"},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Interactive Random Walk","xaxis":{"domain":[0,1],"automargin":true,"title":"Step"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Value"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],"y":[1.3048696542234852,3.591515046924592,2.2026543458122525,1.9238655789948811,1.790544242601223,2.4264946406712973,2.142241719255225,-0.51421370164955071,-2.9546806302250701,-1.634567284494878,-1.9412058785733526,-3.7225143125533524,-3.8944316683129738,-2.6797569691403753,-0.78456350787541007,-1.2150326394816098,-1.4723020222505394,-3.2354651074453198,-2.7753677526140486,-3.4153626285741678,-2.9599125053329485,-2.2550751681041294,-1.2199716461342072,-1.8288980215414181,-1.3239428982434478,-3.0409515773167906,-3.8254105856962868,-4.6763181798728048,-7.0905258298194367,-7.0544032229271814,-6.8484046227269273,-7.2094619212755937,-6.4512986855760772,-7.1780035126526522,-8.5462845570719459,-8.1134665311832279,-8.9248597073698992,-7.4807584456486467,-7.9122046482619925,-7.256556764859786,-6.9346314996558398,-7.7184704405362154,-6.1427429207442383,-5.4998436150269221,-5.4100829684273162,-5.1335322211358534,-4.4542434050805824,-4.3644105185015007,-7.3575006016544355,-7.0726176481237761],"mode":"lines+markers","line":{"color":"rgb(55, 128, 191)","width":2},"marker":{"color":"rgb(219, 64, 82)","size":6,"line":{"color":"rgba(31,119,180,1)"}},"type":"scatter","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="quarto-key-features" class="slide level2">
+<h2>Quarto Key Features</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Unified Syntax</a></li><li><a href="#tabset-1-2">Rich Output</a></li><li><a href="#tabset-1-3">Publishing</a></li><li><a href="#tabset-1-4">Execution</a></li><li><a href="#tabset-1-5">Themes</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p>Consistent markdown across all languages</p>
+</div>
+<div id="tabset-1-2">
+<p>Interactive plots, tables, and widgets</p>
+</div>
+<div id="tabset-1-3">
+<p>Built-in support for websites, books, blogs</p>
+</div>
+<div id="tabset-1-4">
+<p>Execute code in multiple engines</p>
+</div>
+<div id="tabset-1-5">
+<p>Customizable templates and styling</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-myst-markdown" class="slide level2">
+<h2>What is MyST Markdown?</h2>
+<p><strong>M</strong>arkedly <strong>S</strong>tructured <strong>T</strong>ext</p>
+<ul>
+<li>Extension of CommonMark Markdown</li>
+<li>Designed for scientific and technical documentation</li>
+<li>Part of the Jupyter ecosystem (Jupyter Book, Sphinx)</li>
+<li>Supports roles and directives from reStructuredText</li>
+<li>Excellent for creating interactive books</li>
+</ul>
+</section>
+<section id="myst-markdown-syntax" class="slide level2">
+<h2>MyST Markdown Syntax</h2>
+<p>Here is example MyST syntax:</p>
+<pre><code># My Document
+
+:::{note}
+This is a special note block!
+:::
+
+Here's an equation: $E = mc^2$
+
+:::{admonition} Important
+:class: tip
+Remember to document your work!
+:::</code></pre>
+</section>
+<section id="myst-features" class="slide level2">
+<h2>MyST Features</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Directives</strong></p>
+<pre><code>:::{note}
+Special blocks
+:::</code></pre>
+<p><strong>Roles</strong></p>
+<pre><code>{kbd}`Ctrl+C`
+{file}`data.csv`</code></pre>
+<p><strong>Executable Notebooks</strong></p>
+<pre><code>Jupyter notebooks as source</code></pre>
+</div><div class="column" style="width:50%;">
+<p><strong>Cross-references</strong></p>
+<pre><code>See {ref}`section-label`</code></pre>
+<p><strong>Math</strong></p>
+<pre><code>$
+\int_0^1 x^2 dx = \frac{1}{3}
+$</code></pre>
+<p><strong>Interactive Computing</strong></p>
+<pre><code>mybinder integration</code></pre>
+</div></div>
+</section>
+<section id="myst-jupyter-book-power" class="slide level2">
+<h2>MyST + Jupyter Book Power</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Built for Jupyter</strong></p>
+<ul>
+<li>Native notebook support</li>
+<li>Execute during build</li>
+<li>Cache outputs</li>
+<li>Interactive widgets</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Publishing Features</strong></p>
+<ul>
+<li>Beautiful HTML books</li>
+<li>PDF via LaTeX</li>
+<li>Cross-references everywhere</li>
+<li>Automatic TOC</li>
+</ul>
+</div></div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>MyST excels at creating interactive documentation from Jupyter notebooks</p>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-mybinder" class="slide level2">
+<h2>What is mybinder?</h2>
+<p><strong>mybinder.org</strong>: Turn Git repositories into interactive notebooks</p>
+<div>
+<ul>
+<li class="fragment"><strong>Zero installation</strong> for users</li>
+<li class="fragment"><strong>Reproducible environments</strong> via configuration files</li>
+<li class="fragment"><strong>Share live code</strong> with anyone</li>
+<li class="fragment"><strong>Free and open source</strong></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Perfect combination: <strong>MyST Markdown</strong> + <strong>mybinder</strong> = Interactive, reproducible documentation</p>
+</div>
+</section>
+<section id="why-myst-mybinder" class="slide level2 smaller">
+<h2>Why MyST + mybinder?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="traditional-documentation">Traditional Documentation</h3>
+<ul>
+<li>Static PDFs or HTML</li>
+<li>Code examples can’t be run</li>
+<li>Users must set up environment</li>
+<li>Version mismatches</li>
+<li>Hard to experiment</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="myst-mybinder">MyST + mybinder</h3>
+<ul>
+<li>Interactive notebooks</li>
+<li><strong>Click to run</strong> in browser</li>
+<li>Environment pre-configured</li>
+<li>Always reproducible</li>
+<li>Easy experimentation</li>
+</ul>
+</div></div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Users can immediately interact with your analysis without any setup!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="real-world-example-uw-madison-survey" class="slide level2">
+<h2>Real World Example: UW-Madison Survey</h2>
+<p><a href="https://github.com/UW-Madison-DSI/open_source_survey_results_myst"><strong>Open Source Survey Results</strong></a></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><strong>Project Features:</strong></p>
+<ul>
+<li>Survey data analysis using MyST</li>
+<li>Jupyter Book documentation</li>
+<li>mybinder integration</li>
+<li>Fully reproducible workflow</li>
+<li>Interactive data exploration</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><strong>Technologies:</strong></p>
+<ul>
+<li>MyST Markdown</li>
+<li>Jupyter notebooks</li>
+<li>Python analysis</li>
+<li>GitHub hosting</li>
+<li>Binder for compute</li>
+</ul>
+</div></div>
+</section>
+<section id="uw-madison-example-structure" class="slide level2">
+<h2>UW-Madison Example Structure</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href=""></a><span class="ex">open_source_survey_results_myst/</span></span>
+<span id="cb12-2"><a href=""></a><span class="ex">├──</span> _config.yml          <span class="co"># Jupyter Book config</span></span>
+<span id="cb12-3"><a href=""></a><span class="ex">├──</span> _toc.yml            <span class="co"># Table of contents</span></span>
+<span id="cb12-4"><a href=""></a><span class="ex">├──</span> requirements.txt     <span class="co"># Python dependencies</span></span>
+<span id="cb12-5"><a href=""></a><span class="ex">├──</span> notebooks/          <span class="co"># Analysis notebooks</span></span>
+<span id="cb12-6"><a href=""></a><span class="ex">│</span>   ├── demographics.ipynb</span>
+<span id="cb12-7"><a href=""></a><span class="ex">│</span>   ├── usage_patterns.ipynb</span>
+<span id="cb12-8"><a href=""></a><span class="ex">│</span>   └── visualizations.ipynb</span>
+<span id="cb12-9"><a href=""></a><span class="ex">├──</span> data/               <span class="co"># Survey data</span></span>
+<span id="cb12-10"><a href=""></a><span class="ex">└──</span> README.md           <span class="co"># With binder badge</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<p><strong>Key insight</strong>: Everything needed for reproduction in one repo!</p>
+</div>
+</section>
+<section id="mybinder-configuration-files" class="slide level2">
+<h2>mybinder Configuration Files</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">requirements.txt</a></li><li><a href="#tabset-2-2">environment.yml</a></li><li><a href="#tabset-2-3">runtime.txt</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href=""></a>pandas&gt;=1.5.0</span>
+<span id="cb13-2"><a href=""></a>matplotlib&gt;=3.5.0</span>
+<span id="cb13-3"><a href=""></a>seaborn&gt;=0.12.0</span>
+<span id="cb13-4"><a href=""></a>jupyter-book&gt;=0.13.0</span>
+<span id="cb13-5"><a href=""></a>myst-nb&gt;=0.17.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-2">
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href=""></a><span class="fu">name</span><span class="kw">:</span><span class="at"> myproject</span></span>
+<span id="cb14-2"><a href=""></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb14-3"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb14-4"><a href=""></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb14-5"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> python=3.10</span></span>
+<span id="cb14-6"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> pandas</span></span>
+<span id="cb14-7"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> matplotlib</span></span>
+<span id="cb14-8"><a href=""></a><span class="at">  </span><span class="kw">-</span><span class="at"> jupyter-book</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-2-3">
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href=""></a>r-2023-01-01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-mybinder-to-your-project" class="slide level2">
+<h2>Adding mybinder to Your Project</h2>
+<p><strong>1. Add a badge to README.md:</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href=""></a><span class="co">[</span><span class="al">![Binder](https://mybinder.org/badge_logo.svg)</span><span class="co">]</span>(</span>
+<span id="cb16-2"><a href=""></a>  https://mybinder.org/v2/gh/username/repo/main)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>2. Create requirements.txt or environment.yml</strong></p>
+<p><strong>3. Push to GitHub</strong></p>
+<p><strong>4. Click the badge - done!</strong></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>mybinder automatically detects configuration files and builds your environment</p>
+</div>
+</div>
+</div>
+</section>
+<section id="myst-mybinder-workflow" class="slide level2 smaller">
+<h2>MyST + mybinder Workflow</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href=""></a>flowchart TB</span>
+<span id="cb17-2"><a href=""></a>    A[Write MyST/Jupyter] --&gt; B[Push to GitHub]</span>
+<span id="cb17-3"><a href=""></a>    B --&gt; C[Jupyter Book Build]</span>
+<span id="cb17-4"><a href=""></a>    C --&gt; D[Published Documentation]</span>
+<span id="cb17-5"><a href=""></a>    B --&gt; E[mybinder Badge]</span>
+<span id="cb17-6"><a href=""></a>    E --&gt; F[Click Badge]</span>
+<span id="cb17-7"><a href=""></a>    F --&gt; G[Live Interactive Session]</span>
+<span id="cb17-8"><a href=""></a>    </span>
+<span id="cb17-9"><a href=""></a>    style D fill:#90EE90</span>
+<span id="cb17-10"><a href=""></a>    style G fill:#87CEEB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+    A[Write MyST/Jupyter] --&gt; B[Push to GitHub]
+    B --&gt; C[Jupyter Book Build]
+    C --&gt; D[Published Documentation]
+    B --&gt; E[mybinder Badge]
+    E --&gt; F[Click Badge]
+    F --&gt; G[Live Interactive Session]
+    
+    style D fill:#90EE90
+    style G fill:#87CEEB
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Result</strong>: Documentation that readers can <strong>read</strong> OR <strong>execute</strong>!</p>
+</section>
+<section id="live-demo-survey-analysis-example" class="slide level2">
+<h2>Live Demo: Survey Analysis Example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>In the Documentation:</strong></p>
+<ul>
+<li>Read analysis narrative</li>
+<li>View static plots</li>
+<li>See code and results</li>
+<li>Click “Launch Binder”</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>In mybinder:</strong></p>
+<ul>
+<li>Modify parameters</li>
+<li>Re-run analysis</li>
+<li>Create new plots</li>
+<li>Experiment freely</li>
+</ul>
+</div></div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Same environment, guaranteed reproducibility!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="myst-advantages-for-research" class="slide level2">
+<h2>MyST Advantages for Research</h2>
+<ol type="1">
+<li><strong>Jupyter-native</strong>: Notebooks are first-class citizens</li>
+<li><strong>Rich directives</strong>: Admonitions, grids, cards, tabs</li>
+<li><strong>Executable content</strong>: Run code during build</li>
+<li><strong>Cross-references</strong>: Link figures, tables, sections</li>
+<li><strong>mybinder integration</strong>: One-click interactive sessions</li>
+<li><strong>Version control friendly</strong>: Plain text format</li>
+<li><strong>Multiple outputs</strong>: HTML books, PDFs, slides</li>
+</ol>
+</section>
+<section id="example-myst-document-header" class="slide level2">
+<h2>Example: MyST Document Header</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href=""></a><span class="pp">---</span></span>
+<span id="cb18-2"><a href=""></a><span class="fu">jupytext</span><span class="kw">:</span></span>
+<span id="cb18-3"><a href=""></a><span class="at">  </span><span class="fu">text_representation</span><span class="kw">:</span></span>
+<span id="cb18-4"><a href=""></a><span class="at">    </span><span class="fu">extension</span><span class="kw">:</span><span class="at"> .md</span></span>
+<span id="cb18-5"><a href=""></a><span class="at">    </span><span class="fu">format_name</span><span class="kw">:</span><span class="at"> myst</span></span>
+<span id="cb18-6"><a href=""></a><span class="fu">kernelspec</span><span class="kw">:</span></span>
+<span id="cb18-7"><a href=""></a><span class="at">  </span><span class="fu">display_name</span><span class="kw">:</span><span class="at"> Python 3</span></span>
+<span id="cb18-8"><a href=""></a><span class="at">  </span><span class="fu">language</span><span class="kw">:</span><span class="at"> python</span></span>
+<span id="cb18-9"><a href=""></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> python3</span></span>
+<span id="cb18-10"><a href=""></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This allows MyST to execute code blocks automatically!</p>
+</section>
+<section id="example-executable-myst-block" class="slide level2">
+<h2>Example: Executable MyST Block</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href=""></a><span class="fu"># Analysis Results</span></span>
+<span id="cb19-2"><a href=""></a></span>
+<span id="cb19-3"><a href=""></a>Here we analyze the survey data:</span>
+<span id="cb19-4"><a href=""></a></span>
+<span id="cb19-5"><a href=""></a>:::{code-cell} python</span>
+<span id="cb19-6"><a href=""></a>import pandas as pd</span>
+<span id="cb19-7"><a href=""></a>import matplotlib.pyplot as plt</span>
+<span id="cb19-8"><a href=""></a></span>
+<span id="cb19-9"><a href=""></a><span class="fu"># Load data</span></span>
+<span id="cb19-10"><a href=""></a>df = pd.read_csv('survey_data.csv')</span>
+<span id="cb19-11"><a href=""></a></span>
+<span id="cb19-12"><a href=""></a><span class="fu"># Create visualization</span></span>
+<span id="cb19-13"><a href=""></a>df<span class="co">[</span><span class="ot">'category'</span><span class="co">]</span>.value_counts().plot(kind='bar')</span>
+<span id="cb19-14"><a href=""></a>plt.title('Survey Responses by Category')</span>
+<span id="cb19-15"><a href=""></a>plt.show()</span>
+<span id="cb19-16"><a href=""></a>:::</span>
+<span id="cb19-17"><a href=""></a></span>
+<span id="cb19-18"><a href=""></a>The plot above shows clear trends in responses.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 25%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Quarto</th>
+<th>MyST Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Language Support</strong></td>
+<td>Multi-language</td>
+<td>Python-focused</td>
+</tr>
+<tr class="even">
+<td><strong>Output Formats</strong></td>
+<td>HTML, PDF, PPT, Word</td>
+<td>HTML, PDF</td>
+</tr>
+<tr class="odd">
+<td><strong>Ecosystem</strong></td>
+<td>Standalone</td>
+<td>Jupyter/Sphinx</td>
+</tr>
+<tr class="even">
+<td><strong>Learning Curve</strong></td>
+<td>Moderate</td>
+<td>Steeper</td>
+</tr>
+<tr class="odd">
+<td><strong>Best For</strong></td>
+<td>Reports, websites, presentations</td>
+<td>Books, documentation</td>
+</tr>
+<tr class="even">
+<td><strong>Interactive</strong></td>
+<td>Yes (Observable, Shiny)</td>
+<td>Yes (Jupyter widgets)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparison-quarto-vs-myst" class="slide level2">
+<h2>Comparison: Quarto vs MyST</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 25%">
+<col style="width: 46%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Quarto</th>
+<th>MyST Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Language Support</strong></td>
+<td>Multi-language</td>
+<td>Python-focused</td>
+</tr>
+<tr class="even">
+<td><strong>Output Formats</strong></td>
+<td>HTML, PDF, PPT, Word</td>
+<td>HTML, PDF</td>
+</tr>
+<tr class="odd">
+<td><strong>Ecosystem</strong></td>
+<td>Standalone</td>
+<td>Jupyter/Sphinx</td>
+</tr>
+<tr class="even">
+<td><strong>Learning Curve</strong></td>
+<td>Moderate</td>
+<td>Steeper</td>
+</tr>
+<tr class="odd">
+<td><strong>Best For</strong></td>
+<td>Reports, websites, presentations</td>
+<td>Books, documentation</td>
+</tr>
+<tr class="even">
+<td><strong>Interactive</strong></td>
+<td>Yes (Observable, Shiny)</td>
+<td>Yes (Jupyter widgets)</td>
+</tr>
+<tr class="odd">
+<td><strong>mybinder</strong></td>
+<td>Manual setup</td>
+<td>Native integration</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-use-myst" class="slide level2 smaller">
+<h2>When to Use MyST?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="choose-myst-when">Choose MyST When:</h3>
+<p>✅ Building interactive books</p>
+<p>✅ Jupyter-centric workflow</p>
+<p>✅ Need mybinder integration</p>
+<p>✅ Python-heavy analysis</p>
+<p>✅ Want Sphinx ecosystem</p>
+<p>✅ Course materials online</p>
+</div><div class="column" style="width:50%;">
+<h3 id="real-use-cases">Real Use Cases:</h3>
+<ul>
+<li><strong>Research documentation</strong> (UW-Madison example)</li>
+<li><strong>Course textbooks</strong> with live code</li>
+<li><strong>Data analysis reports</strong> with reproducible results</li>
+<li><strong>API documentation</strong> with examples</li>
+<li><strong>Tutorial websites</strong> with interactive exercises</li>
+</ul>
+</div></div>
+</section>
+<section id="myst-best-practices" class="slide level2">
+<h2>MyST Best Practices</h2>
+<ol type="1">
+<li><strong>Use Jupyter notebooks</strong> as source files</li>
+<li><strong>Add mybinder badge</strong> for interactivity<br>
+</li>
+<li><strong>Document dependencies</strong> clearly (requirements.txt)</li>
+<li><strong>Cache outputs</strong> for faster builds</li>
+<li><strong>Use directives</strong> for better formatting</li>
+<li><strong>Cross-reference</strong> figures and tables</li>
+<li><strong>Version control</strong> everything (including data when possible)</li>
+<li><strong>Test mybinder link</strong> before sharing</li>
+</ol>
+</section>
+<section id="getting-started-quarto" class="slide level2">
+<h2>Getting Started: Quarto</h2>
+<p><strong>Installation:</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href=""></a><span class="co"># Download from quarto.org or use package manager</span></span>
+<span id="cb20-2"><a href=""></a><span class="ex">brew</span> install quarto  <span class="co"># macOS</span></span>
+<span id="cb20-3"><a href=""></a><span class="ex">choco</span> install quarto <span class="co"># Windows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Create a document:</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href=""></a><span class="ex">quarto</span> create-project myproject</span>
+<span id="cb21-2"><a href=""></a><span class="bu">cd</span> myproject</span>
+<span id="cb21-3"><a href=""></a><span class="ex">quarto</span> render document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Preview:</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href=""></a><span class="ex">quarto</span> preview document.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="getting-started-myst" class="slide level2">
+<h2>Getting Started: MyST</h2>
+<p><strong>Installation:</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href=""></a><span class="ex">pip</span> install jupyter-book myst-parser</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Create a book:</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href=""></a><span class="ex">jupyter-book</span> create mybook/</span>
+<span id="cb24-2"><a href=""></a><span class="bu">cd</span> mybook</span>
+<span id="cb24-3"><a href=""></a><span class="ex">jupyter-book</span> build .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Start with MyST-NB:</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href=""></a><span class="ex">pip</span> install myst-nb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="best-practices-for-reproducibility" class="slide level2">
+<h2>Best Practices for Reproducibility</h2>
+<ol type="1">
+<li><strong>Version Control</strong>: Use Git to track all changes</li>
+<li><strong>Environment Management</strong>:
+<ul>
+<li>Python: requirements.txt, conda env export</li>
+<li>R: renv::snapshot(), renv.lock</li>
+</ul></li>
+<li><strong>Clear Documentation</strong>: Explain what, why, and how</li>
+<li><strong>Modular Code</strong>: Separate data, analysis, visualization</li>
+<li><strong>Data Provenance</strong>: Record sources and transformations</li>
+<li><strong>Automated Workflows</strong>: Use targets, make, drake</li>
+</ol>
+</section>
+<section id="example-complete-workflow" class="slide level2">
+<h2>Example: Complete Workflow</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href=""></a>flowchart LR</span>
+<span id="cb26-2"><a href=""></a>    A[Raw Data] --&gt; B[Clean Data]</span>
+<span id="cb26-3"><a href=""></a>    B --&gt; C[Analysis]</span>
+<span id="cb26-4"><a href=""></a>    C --&gt; D[Visualizations]</span>
+<span id="cb26-5"><a href=""></a>    D --&gt; E[Report]</span>
+<span id="cb26-6"><a href=""></a>    F[Code] --&gt; C</span>
+<span id="cb26-7"><a href=""></a>    F --&gt; D</span>
+<span id="cb26-8"><a href=""></a>    G[Parameters] --&gt; C</span>
+<span id="cb26-9"><a href=""></a>    style E fill:#90EE90</span>
+<span id="cb26-10"><a href=""></a>    style A fill:#FFB6C1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Raw Data] --&gt; B[Clean Data]
+    B --&gt; C[Analysis]
+    C --&gt; D[Visualizations]
+    D --&gt; E[Report]
+    F[Code] --&gt; C
+    F --&gt; D
+    G[Parameters] --&gt; C
+    style E fill:#90EE90
+    style A fill:#FFB6C1
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="practical-example-data-analysis" class="slide level2 smaller">
+<h2>Practical Example: Data Analysis</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb27-2"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb27-3"><a href=""></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb27-4"><a href=""></a></span>
+<span id="cb27-5"><a href=""></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb27-6"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb27-7"><a href=""></a></span>
+<span id="cb27-8"><a href=""></a><span class="co"># Create sample dataset</span></span>
+<span id="cb27-9"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb27-10"><a href=""></a>  <span class="at">Method =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">'Traditional'</span>, <span class="st">'Reproducible'</span>), <span class="at">each =</span> <span class="dv">50</span>),</span>
+<span id="cb27-11"><a href=""></a>  <span class="at">Time_Saved =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">2</span>),</span>
+<span id="cb27-12"><a href=""></a>                 <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">15</span>, <span class="at">sd =</span> <span class="dv">3</span>)),</span>
+<span id="cb27-13"><a href=""></a>  <span class="at">Errors =</span> <span class="fu">c</span>(<span class="fu">rpois</span>(<span class="dv">50</span>, <span class="at">lambda =</span> <span class="dv">5</span>),</span>
+<span id="cb27-14"><a href=""></a>             <span class="fu">rpois</span>(<span class="dv">50</span>, <span class="at">lambda =</span> <span class="dv">2</span>))</span>
+<span id="cb27-15"><a href=""></a>)</span>
+<span id="cb27-16"><a href=""></a></span>
+<span id="cb27-17"><a href=""></a><span class="co"># Create visualization</span></span>
+<span id="cb27-18"><a href=""></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb27-19"><a href=""></a></span>
+<span id="cb27-20"><a href=""></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Method, <span class="at">y =</span> Time_Saved, <span class="at">fill =</span> Method)) <span class="sc">+</span></span>
+<span id="cb27-21"><a href=""></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb27-22"><a href=""></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>)) <span class="sc">+</span></span>
+<span id="cb27-23"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Time Saved (hours/month)"</span>,</span>
+<span id="cb27-24"><a href=""></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Hours"</span>) <span class="sc">+</span></span>
+<span id="cb27-25"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-26"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb27-27"><a href=""></a></span>
+<span id="cb27-28"><a href=""></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Method, <span class="at">y =</span> Errors, <span class="at">fill =</span> Method)) <span class="sc">+</span></span>
+<span id="cb27-29"><a href=""></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb27-30"><a href=""></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#E69F00"</span>, <span class="st">"#56B4E9"</span>)) <span class="sc">+</span></span>
+<span id="cb27-31"><a href=""></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Errors"</span>,</span>
+<span id="cb27-32"><a href=""></a>       <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb27-33"><a href=""></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb27-34"><a href=""></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb27-35"><a href=""></a></span>
+<span id="cb27-36"><a href=""></a>p1 <span class="sc">+</span> p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="ppt_files/figure-revealjs/unnamed-chunk-6-1.png" width="1152" class="r-stretch"></section>
+<section id="working-with-tidyverse" class="slide level2">
+<h2>Working with tidyverse</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb28-2"><a href=""></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb28-3"><a href=""></a><span class="fu">library</span>(knitr)</span>
+<span id="cb28-4"><a href=""></a></span>
+<span id="cb28-5"><a href=""></a><span class="co"># Example data manipulation</span></span>
+<span id="cb28-6"><a href=""></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb28-7"><a href=""></a>  <span class="fu">select</span>(mpg, cyl, hp, wt) <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href=""></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href=""></a>  <span class="fu">summarise</span>(</span>
+<span id="cb28-10"><a href=""></a>    <span class="at">avg_mpg =</span> <span class="fu">mean</span>(mpg),</span>
+<span id="cb28-11"><a href=""></a>    <span class="at">avg_hp =</span> <span class="fu">mean</span>(hp),</span>
+<span id="cb28-12"><a href=""></a>    <span class="at">avg_wt =</span> <span class="fu">mean</span>(wt),</span>
+<span id="cb28-13"><a href=""></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb28-14"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb28-15"><a href=""></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>, <span class="at">caption =</span> <span class="st">"Summary Statistics by Cylinder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>Summary Statistics by Cylinder</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">avg_mpg</th>
+<th style="text-align: right;">avg_hp</th>
+<th style="text-align: right;">avg_wt</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">26.66</td>
+<td style="text-align: right;">82.64</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">19.74</td>
+<td style="text-align: right;">122.29</td>
+<td style="text-align: right;">3.12</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">15.10</td>
+<td style="text-align: right;">209.21</td>
+<td style="text-align: right;">4.00</td>
+<td style="text-align: right;">14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="statistical-modeling-example" class="slide level2">
+<h2>Statistical Modeling Example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="co"># Fit a linear model</span></span>
+<span id="cb29-2"><a href=""></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt <span class="sc">+</span> hp, <span class="at">data =</span> mtcars)</span>
+<span id="cb29-3"><a href=""></a></span>
+<span id="cb29-4"><a href=""></a><span class="co"># Display summary</span></span>
+<span id="cb29-5"><a href=""></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = mpg ~ wt + hp, data = mtcars)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.941 -1.600 -0.182  1.050  5.854 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 37.22727    1.59879  23.285  &lt; 2e-16 ***
+wt          -3.87783    0.63273  -6.129 1.12e-06 ***
+hp          -0.03177    0.00903  -3.519  0.00145 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.593 on 29 degrees of freedom
+Multiple R-squared:  0.8268,    Adjusted R-squared:  0.8148 
+F-statistic: 69.21 on 2 and 29 DF,  p-value: 9.109e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="model-diagnostics-plot" class="slide level2">
+<h2>Model Diagnostics Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="co"># Diagnostic plots</span></span>
+<span id="cb31-2"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb31-3"><a href=""></a><span class="fu">plot</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="ppt_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="using-renv-for-reproducibility" class="slide level2">
+<h2>Using renv for Reproducibility</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="co"># Initialize renv for your project</span></span>
+<span id="cb32-2"><a href=""></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
+<span id="cb32-3"><a href=""></a></span>
+<span id="cb32-4"><a href=""></a><span class="co"># Install packages</span></span>
+<span id="cb32-5"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb32-6"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb32-7"><a href=""></a></span>
+<span id="cb32-8"><a href=""></a><span class="co"># Take a snapshot of dependencies</span></span>
+<span id="cb32-9"><a href=""></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
+<span id="cb32-10"><a href=""></a></span>
+<span id="cb32-11"><a href=""></a><span class="co"># Restore dependencies on another machine</span></span>
+<span id="cb32-12"><a href=""></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Best Practice</strong></p>
+</div>
+<div class="callout-content">
+<p>Always use renv to manage R package dependencies for reproducible research!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-tables-with-gt" class="slide level2">
+<h2>Creating Tables with gt</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">library</span>(gt)</span>
+<span id="cb33-2"><a href=""></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb33-3"><a href=""></a></span>
+<span id="cb33-4"><a href=""></a><span class="co"># Create a nice table</span></span>
+<span id="cb33-5"><a href=""></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href=""></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href=""></a>  <span class="fu">select</span>(mpg, cyl, disp, hp, wt) <span class="sc">%&gt;%</span></span>
+<span id="cb33-8"><a href=""></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-9"><a href=""></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb33-10"><a href=""></a>    <span class="at">title =</span> <span class="st">"Motor Trend Car Road Tests"</span>,</span>
+<span id="cb33-11"><a href=""></a>    <span class="at">subtitle =</span> <span class="st">"First 10 observations"</span></span>
+<span id="cb33-12"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href=""></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb33-14"><a href=""></a>    <span class="at">columns =</span> <span class="fu">c</span>(mpg, disp, wt),</span>
+<span id="cb33-15"><a href=""></a>    <span class="at">decimals =</span> <span class="dv">1</span></span>
+<span id="cb33-16"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-17"><a href=""></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb33-18"><a href=""></a>    <span class="at">mpg =</span> <span class="st">"MPG"</span>,</span>
+<span id="cb33-19"><a href=""></a>    <span class="at">cyl =</span> <span class="st">"Cylinders"</span>,</span>
+<span id="cb33-20"><a href=""></a>    <span class="at">disp =</span> <span class="st">"Displacement"</span>,</span>
+<span id="cb33-21"><a href=""></a>    <span class="at">hp =</span> <span class="st">"Horsepower"</span>,</span>
+<span id="cb33-22"><a href=""></a>    <span class="at">wt =</span> <span class="st">"Weight"</span></span>
+<span id="cb33-23"><a href=""></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-24"><a href=""></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb33-25"><a href=""></a>    <span class="at">table.font.size =</span> <span class="dv">12</span></span>
+<span id="cb33-26"><a href=""></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="ypvxafkivz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ypvxafkivz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ypvxafkivz thead, #ypvxafkivz tbody, #ypvxafkivz tfoot, #ypvxafkivz tr, #ypvxafkivz td, #ypvxafkivz th {
+  border-style: none;
+}
+
+#ypvxafkivz p {
+  margin: 0;
+  padding: 0;
+}
+
+#ypvxafkivz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ypvxafkivz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ypvxafkivz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ypvxafkivz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ypvxafkivz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ypvxafkivz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ypvxafkivz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ypvxafkivz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ypvxafkivz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ypvxafkivz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ypvxafkivz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ypvxafkivz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ypvxafkivz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ypvxafkivz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ypvxafkivz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypvxafkivz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ypvxafkivz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ypvxafkivz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ypvxafkivz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypvxafkivz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ypvxafkivz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypvxafkivz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ypvxafkivz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypvxafkivz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ypvxafkivz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ypvxafkivz .gt_left {
+  text-align: left;
+}
+
+#ypvxafkivz .gt_center {
+  text-align: center;
+}
+
+#ypvxafkivz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ypvxafkivz .gt_font_normal {
+  font-weight: normal;
+}
+
+#ypvxafkivz .gt_font_bold {
+  font-weight: bold;
+}
+
+#ypvxafkivz .gt_font_italic {
+  font-style: italic;
+}
+
+#ypvxafkivz .gt_super {
+  font-size: 65%;
+}
+
+#ypvxafkivz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ypvxafkivz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ypvxafkivz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ypvxafkivz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ypvxafkivz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ypvxafkivz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ypvxafkivz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ypvxafkivz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ypvxafkivz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Motor Trend Car Road Tests</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">First 10 observations</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="mpg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">MPG</th>
+<th id="cyl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Cylinders</th>
+<th id="disp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Displacement</th>
+<th id="hp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Horsepower</th>
+<th id="wt" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Weight</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="mpg">21.0</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_right" headers="disp">160.0</td>
+<td class="gt_row gt_right" headers="hp">110</td>
+<td class="gt_row gt_right" headers="wt">2.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="mpg">21.0</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_right" headers="disp">160.0</td>
+<td class="gt_row gt_right" headers="hp">110</td>
+<td class="gt_row gt_right" headers="wt">2.9</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="mpg">22.8</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_right" headers="disp">108.0</td>
+<td class="gt_row gt_right" headers="hp">93</td>
+<td class="gt_row gt_right" headers="wt">2.3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="mpg">21.4</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_right" headers="disp">258.0</td>
+<td class="gt_row gt_right" headers="hp">110</td>
+<td class="gt_row gt_right" headers="wt">3.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="mpg">18.7</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_right" headers="disp">360.0</td>
+<td class="gt_row gt_right" headers="hp">175</td>
+<td class="gt_row gt_right" headers="wt">3.4</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="mpg">18.1</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_right" headers="disp">225.0</td>
+<td class="gt_row gt_right" headers="hp">105</td>
+<td class="gt_row gt_right" headers="wt">3.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="mpg">14.3</td>
+<td class="gt_row gt_right" headers="cyl">8</td>
+<td class="gt_row gt_right" headers="disp">360.0</td>
+<td class="gt_row gt_right" headers="hp">245</td>
+<td class="gt_row gt_right" headers="wt">3.6</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="mpg">24.4</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_right" headers="disp">146.7</td>
+<td class="gt_row gt_right" headers="hp">62</td>
+<td class="gt_row gt_right" headers="wt">3.2</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="mpg">22.8</td>
+<td class="gt_row gt_right" headers="cyl">4</td>
+<td class="gt_row gt_right" headers="disp">140.8</td>
+<td class="gt_row gt_right" headers="hp">95</td>
+<td class="gt_row gt_right" headers="wt">3.1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="mpg">19.2</td>
+<td class="gt_row gt_right" headers="cyl">6</td>
+<td class="gt_row gt_right" headers="disp">167.6</td>
+<td class="gt_row gt_right" headers="hp">123</td>
+<td class="gt_row gt_right" headers="wt">3.4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="resources" class="slide level2 smaller">
+<h2>Resources</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="quarto">Quarto</h3>
+<ul>
+<li><a href="https://quarto.org">Official Docs</a></li>
+<li><a href="https://quarto.org/docs/gallery">Gallery</a></li>
+<li><a href="https://github.com/mcanouil/awesome-quarto">Awesome Quarto</a></li>
+</ul>
+<h3 id="myst-jupyter-book">MyST &amp; Jupyter Book</h3>
+<ul>
+<li><a href="https://myst-parser.readthedocs.io">MyST Parser</a></li>
+<li><a href="https://jupyterbook.org">Jupyter Book</a></li>
+<li><a href="https://myst-nb.readthedocs.io">MyST-NB</a></li>
+<li><a href="https://mybinder.org">mybinder</a></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="examples">Examples</h3>
+<ul>
+<li><a href="https://github.com/UW-Madison-DSI/open_source_survey_results_myst">UW-Madison Survey</a></li>
+<li><a href="https://executablebooks.org/en/latest/gallery.html">Executable Books Gallery</a></li>
+</ul>
+<h3 id="general">General</h3>
+<ul>
+<li><a href="https://the-turing-way.netlify.app">The Turing Way</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+</ul>
+<h3 id="r-packages">R Packages</h3>
+<ul>
+<li><a href="https://www.tidyverse.org/">tidyverse</a></li>
+<li><a href="https://rstudio.github.io/renv/">renv</a></li>
+</ul>
+</div></div>
+</section>
+<section id="section" class="slide level2" data-background-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200" data-background-opacity="0.3">
+<h2></h2>
+<div class="r-fit-text">
+<p><strong>Thank You!</strong></p>
+<p>Questions?</p>
+</div>
+<div class="fragment">
+<blockquote>
+<p>“Reproducible research is not just good practice—it’s the foundation of credible science.”</p>
+</blockquote>
+<p><strong>Try it out</strong>: Check out the <a href="https://github.com/UW-Madison-DSI/open_source_survey_results_myst">UW-Madison example</a> and click the mybinder badge!</p>
+</div>
+<aside class="notes">
+<p>Embrace reproducible research: Your future self will thank you!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="ppt_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="ppt_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="ppt_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="ppt_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
