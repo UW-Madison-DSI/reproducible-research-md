@@ -59,6 +59,26 @@ docker run --rm -v "$PWD:/project" reproducible-research
 Want to change the data? Edit or rerun `python3 data/generate_data.py`, then
 re-render — every number, figure, and table updates automatically.
 
+### Pinning R package versions with renv (optional)
+
+Rung 2 of the ladder: lock the *exact* package versions so the analysis runs the
+same next year. Run once (with R installed) to generate a real `renv.lock`:
+
+```bash
+Rscript setup_renv.R
+```
+
+Commit the resulting `renv.lock`. Anyone can then reproduce your exact
+environment with:
+
+```r
+renv::restore()
+```
+
+> Note: this repo's Binder image is built from `binder/`, and the Docker image
+> from a pinned CRAN snapshot — so `renv.lock` mainly benefits local development
+> and collaborators who clone the project.
+
 ## Why This Matters
 
 - **Your future self benefits first.** The document *is* the analysis — no hunting for the script that made a figure six months later.
