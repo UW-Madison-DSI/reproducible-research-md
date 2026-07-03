@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install the Quarto CLI (renders .qmd with its native YAML options).
-RUN curl -L -o /tmp/quarto.deb \
-      "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb" \
+# Detect the architecture so this builds on both amd64 (CI/Binder) and
+# arm64 (Apple Silicon).
+RUN ARCH="$(dpkg --print-architecture)" \
+    && curl -L -o /tmp/quarto.deb \
+      "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-${ARCH}.deb" \
     && apt-get update && apt-get install -y /tmp/quarto.deb \
     && rm /tmp/quarto.deb && rm -rf /var/lib/apt/lists/*
 
