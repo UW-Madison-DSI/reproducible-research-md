@@ -14,6 +14,19 @@ execute:
   echo: true
 ---
 
+## Agenda
+
+::: {.incremental}
+- **The problem**: reproducibility crisis & core concepts
+- **Literate programming**: code + narrative in one document
+- **Quarto**: language-agnostic scientific publishing
+- **MyST Markdown**: interactive books & mybinder
+- **Reproducible environments**: renv, Docker, archiving
+- **Best practices** & getting started
+:::
+
+---
+
 ## What is Reproducible Research? {.smaller}
 
 The ability to recreate scientific findings using:
@@ -56,6 +69,73 @@ Reproducibility is fundamental to the scientific method
 
 - Clear methods
 - Visible decisions
+:::
+:::
+
+---
+
+## The Reproducibility Crisis {.smaller}
+
+::: {.columns}
+::: {.column width="55%"}
+A 2016 *Nature* survey of 1,576 researchers found:
+
+::: {.incremental}
+- **>70%** failed to reproduce another scientist's experiments
+- **>50%** failed to reproduce their *own* experiments
+- Selective reporting & pressure to publish cited as top causes
+:::
+:::
+
+::: {.column width="45%"}
+::: {.callout-warning}
+Irreproducible preclinical research alone is estimated to cost
+**$28 billion/year** in the US.
+:::
+:::
+:::
+
+::: {.notes}
+Baker, M. (2016). "1,500 scientists lift the lid on reproducibility." Nature.
+:::
+
+---
+
+## Reproducible vs. Replicable {.smaller}
+
+| Term | Same data? | Same code? | Question answered |
+|------|:---:|:---:|------|
+| **Reproducible** | ✅ | ✅ | Do I get the same result from the same analysis? |
+| **Replicable** | ❌ | ✅ | Does the finding hold with *new* data? |
+| **Robust** | ✅ | ❌ | Does it hold with a *different* method? |
+| **Generalizable** | ❌ | ❌ | Does it hold across data *and* methods? |
+
+::: {.callout-note}
+This deck focuses on **reproducibility** — the foundation the others build on.
+:::
+
+---
+
+## Literate Programming {.smaller}
+
+> "Instead of instructing a computer what to do, let us concentrate on
+> explaining to humans what we want the computer to do." — Donald Knuth (1984)
+
+::: {.columns}
+::: {.column width="50%"}
+**The idea**
+
+- Code and narrative live in *one* document
+- Prose explains the *why*; code shows the *how*
+- Output is generated, never copy-pasted
+:::
+
+::: {.column width="50%"}
+**Why it matters**
+
+- No stale results from manual updates
+- The document *is* the analysis
+- Powers R Markdown, Quarto, MyST & Jupyter
 :::
 :::
 
@@ -809,6 +889,57 @@ Always use renv to manage R package dependencies for reproducible research!
 
 ---
 
+## Containerization with Docker {.smaller}
+
+Capture the *entire* computational environment — OS, system libraries,
+language, and packages — in a single portable image.
+
+```dockerfile
+FROM rocker/r-ver:4.3.0        # pinned R version
+
+RUN R -e "install.packages('renv')"
+COPY renv.lock renv.lock        # restore exact package versions
+RUN R -e "renv::restore()"
+
+COPY . /project
+WORKDIR /project
+CMD ["Rscript", "analysis.R"]
+```
+
+::: {.callout-tip}
+`renv` pins packages; Docker pins *everything else*. Together they make an
+analysis reproducible years later, on any machine.
+:::
+
+---
+
+## Archiving & Citable Research {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Make it permanent**
+
+- **Zenodo** / **OSF** mint a **DOI** for your repo
+- GitHub → Zenodo integration archives each release
+- A DOI makes code & data *citable*
+:::
+
+::: {.column width="50%"}
+**FAIR principles**
+
+- **F**indable — persistent identifiers
+- **A**ccessible — open, documented
+- **I**nteroperable — standard formats
+- **R**eusable — clear licensing
+:::
+:::
+
+::: {.callout-note}
+GitHub is for collaboration; an archive with a DOI is for *permanence*.
+:::
+
+---
+
 ## Creating Tables with gt
 
 ```{r}
@@ -875,6 +1006,36 @@ mtcars %>%
 - [tidyverse](https://www.tidyverse.org/)
 - [renv](https://rstudio.github.io/renv/)
 :::
+:::
+
+---
+
+## Start Small: The Adoption Ladder {.smaller}
+
+You don't need everything at once — each rung is useful on its own and takes minutes.
+
+::: {.incremental}
+1. **Write in Quarto/R Markdown** — prose + one code chunk = literate programming *(zero setup)*
+2. **`renv::snapshot()`** — one command pins your packages so it runs the same next year
+3. **`requirements.txt` + Binder badge** — anyone runs your work in a browser, no install
+4. **Docker or a Zenodo DOI** — only when you need exact environments or citable archives
+:::
+
+::: {.callout-tip}
+The value compounds, but so does the effort — stop at whatever rung fits your needs.
+:::
+
+---
+
+## Key Takeaways
+
+::: {.incremental}
+1. **Reproducibility is the foundation** of credible science
+2. **Literate programming** keeps code and narrative in sync
+3. **Quarto & MyST** turn analyses into shareable, executable documents
+4. **Pin your environment** — renv, Docker, `requirements.txt`
+5. **mybinder** lets anyone run your work with zero setup
+6. **Archive with a DOI** to make research permanent and citable
 :::
 
 ---
