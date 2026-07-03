@@ -5,3 +5,4 @@
 
 # Quarto / render cache
 .quarto/
+.DS_Store

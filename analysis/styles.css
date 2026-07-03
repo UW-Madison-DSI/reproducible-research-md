@@ -1,0 +1,50 @@
+/* Light brand polish for the worked example (UW-Madison accent). */
+
+:root {
+  --brand: #c5050c;        /* Badger red */
+  --brand-dark: #9b1b30;
+}
+
+/* Headings pick up the brand accent */
+h1, h2, h3 {
+  color: var(--brand-dark);
+}
+
+h2 {
+  border-bottom: 2px solid var(--brand);
+  padding-bottom: 0.2rem;
+}
+
+/* Links */
+a {
+  color: var(--brand);
+}
+a:hover {
+  color: var(--brand-dark);
+}
+
+/* Give figures a little breathing room and center captions */
+figure {
+  margin: 1.5rem auto;
+}
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+
+/* Tidy up tables from knitr::kable */
+table {
+  margin: 1rem auto;
+}
+table caption {
+  caption-side: top;
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 0.5rem;
+}
+
+/* Slightly softer code blocks */
+pre {
+  border-left: 3px solid var(--brand);
+}
