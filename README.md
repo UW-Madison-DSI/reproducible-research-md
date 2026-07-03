@@ -1,14 +1,63 @@
 # Reproducible Research
 
-This repository demonstrates the principles and practical workflow of reproducible research, with a particular focus on the integration of MyST Markdown and Quarto for creating transparent, shareable, and executable research documents.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UW-Madison-DSI/reproducible-research-md/main?urlpath=rstudio)
 
-The file `ppt.Rmd` contains the source for a presentation built using Quarto, showcasing how to generate reproducible slides directly from code, data, and documentation within the same environment.
+This repository is **both a talk and a template**. It explains the principles of
+reproducible research *and* is itself a small, working reproducible project you
+can clone and build on — with a particular focus on Quarto and MyST Markdown for
+transparent, shareable, executable research documents.
+
+- `ppt.Rmd` — a Quarto presentation *about* reproducible research (the talk).
+- `analysis/report.qmd` — a small, complete reproducible analysis (the example).
 
 ## Key Features
 
 - Demonstrates reproducible workflows using R Markdown and Quarto.
 - Integrates MyST Markdown for improved scientific documentation and interoperability.
-- Provides an example presentation (ppt.Rmd) to illustrate reproducible research in practice.
+- Ships a worked example (`analysis/report.qmd`) that goes from raw data to figure and table.
+- Reproducible three ways: one-click Binder, local Quarto, or Docker.
+
+## Repository Structure
+
+```
+├── ppt.Rmd / ppt.html      # the talk: a presentation on reproducible research
+├── analysis/report.qmd     # worked example: data → code → figure → table
+├── data/
+│   ├── study_data.csv      # sample dataset used by the analysis
+│   ├── generate_data.py    # provenance: deterministically regenerates the data
+│   └── README.md           # data dictionary
+├── binder/                 # one-click reproducible environment (Binder)
+│   ├── install.R
+│   └── runtime.txt
+├── Dockerfile              # bit-for-bit local reproduction
+└── reproducible-research.Rproj
+```
+
+## Reproduce the Worked Example
+
+Pick whichever fits your setup — all three run the same analysis:
+
+**1. One-click in the browser (no install).** Click the Binder badge above, then
+open `analysis/report.qmd` and render it. Binder builds the environment from
+`binder/`.
+
+**2. Locally with Quarto.**
+
+```bash
+# Install Quarto (https://quarto.org) and R, then:
+Rscript binder/install.R          # install the R packages
+quarto render analysis/report.qmd # builds analysis/report.html
+```
+
+**3. With Docker (bit-for-bit).**
+
+```bash
+docker build -t reproducible-research .
+docker run --rm -v "$PWD:/project" reproducible-research
+```
+
+Want to change the data? Edit or rerun `python3 data/generate_data.py`, then
+re-render — every number, figure, and table updates automatically.
 
 ## Why This Matters
 

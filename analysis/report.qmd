@@ -1,0 +1,104 @@
+---
+title: "Worked Example: A Reproducible Analysis"
+subtitle: "Traditional vs. Reproducible workflows"
+author: "UW-Madison DSI"
+date: today
+format:
+  html:
+    toc: true
+    code-fold: show
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Purpose
+
+This document is a *small but complete* reproducible analysis. It reads the
+dataset in `data/study_data.csv`, explores it, fits a model, and produces a
+figure and a table — all from one source file. Re-render it and every number
+below updates automatically.
+
+```{r}
+#| label: setup
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+```
+
+## Load the data
+
+We read the dataset with a path relative to the project root, so the analysis
+runs the same on any machine.
+
+```{r}
+#| label: load
+study <- read_csv(here::here("data", "study_data.csv"))
+glimpse(study)
+```
+
+## Summarise
+
+```{r}
+#| label: summary
+study |>
+  group_by(method) |>
+  summarise(
+    n            = n(),
+    mean_hours   = mean(hours_saved),
+    mean_errors  = mean(errors),
+    .groups = "drop"
+  ) |>
+  kable(digits = 2, caption = "Mean hours saved and errors by workflow")
+```
+
+## Visualise
+
+```{r}
+#| label: fig-hours
+#| fig-cap: "Hours saved per month by workflow. The reproducible workflow shifts the whole distribution upward."
+#| fig-width: 8
+#| fig-height: 4.5
+ggplot(study, aes(x = method, y = hours_saved, fill = method)) +
+  geom_boxplot(alpha = 0.7, outlier.alpha = 0.4) +
+  scale_fill_manual(values = c("Traditional" = "#E69F00",
+                               "Reproducible" = "#56B4E9")) +
+  labs(title = "Time saved by workflow",
+       x = NULL, y = "Hours saved / month") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+```
+
+## Model
+
+A simple linear model estimates the difference in hours saved between the two
+workflows.
+
+```{r}
+#| label: model
+model <- lm(hours_saved ~ method, data = study)
+summary(model)
+```
+
+```{r}
+#| label: tbl-effect
+#| echo: false
+effect <- coef(summary(model))["methodTraditional", "Estimate"]
+```
+
+The `Traditional` workflow is associated with about
+**`r round(abs(effect), 1)` fewer hours saved per month** than the
+`Reproducible` one — and because that number is computed from the data, it can
+never drift out of sync with the table and figure above.
+
+## Reproduce this analysis
+
+```bash
+# from the project root
+quarto render analysis/report.qmd
+```
+
+That single command reruns everything and rebuilds `report.html`.
