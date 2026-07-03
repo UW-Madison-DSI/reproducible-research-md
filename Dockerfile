@@ -3,14 +3,23 @@
 #   docker build -t reproducible-research .
 #   docker run --rm -v "$PWD:/project" reproducible-research
 #
-# The rocker image pins the R version; the CRAN snapshot in install.R's
-# companion (runtime date) keeps package versions stable.
+# The rocker image pins the R version; the CRAN snapshot below keeps package
+# versions stable. Quarto is installed so the .qmd renders with its full
+# format:/theme: options (rmarkdown::render alone ignores those).
 FROM rocker/r-ver:4.3.0
 
-# System libraries commonly needed by the tidyverse / rendering.
+ARG QUARTO_VERSION=1.4.550
+
+# System libraries needed by the tidyverse and for downloading Quarto.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      libxml2-dev libssl-dev libcurl4-openssl-dev pandoc \
+      libxml2-dev libssl-dev libcurl4-openssl-dev pandoc curl \
     && rm -rf /var/lib/apt/lists/*
+
+# Install the Quarto CLI (renders .qmd with its native YAML options).
+RUN curl -L -o /tmp/quarto.deb \
+      "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb" \
+    && apt-get update && apt-get install -y /tmp/quarto.deb \
+    && rm /tmp/quarto.deb && rm -rf /var/lib/apt/lists/*
 
 # Install a pinned CRAN snapshot for reproducible package versions.
 RUN echo 'options(repos = c(CRAN = "https://packagemanager.posit.co/cran/2024-01-01"))' \
@@ -20,5 +29,5 @@ RUN R -e "install.packages(c('readr','dplyr','ggplot2','knitr','here','rmarkdown
 
 WORKDIR /project
 
-# Render the report by default. Mount the repo at /project (see run command).
-CMD ["R", "-e", "rmarkdown::render('analysis/report.qmd')"]
+# Render the report with Quarto by default. Mount the repo at /project.
+CMD ["quarto", "render", "analysis/report.qmd"]

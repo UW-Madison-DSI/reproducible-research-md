@@ -6,3 +6,7 @@
 # Quarto / render cache
 .quarto/
 .DS_Store
+
+# Generated report output (regenerate with: quarto render analysis/report.qmd)
+analysis/report.html
+analysis/report_files/
