@@ -1,0 +1,300 @@
+/* =============================================================
+   UW–Madison reveal.js theme
+   Applies the University of Wisconsin–Madison design system
+   (Badger Red #c5050c, Red Hat Display / Red Hat Text, the
+   mini-bar device, red bands) to reveal.js.
+
+   Tokens mirror colors_and_type.css (the official uw-style.css
+   :root subset). Do not modify Badger Red — it is the brand.
+   ============================================================= */
+
+:root {
+  --uwRed:          #c5050c;   /* Badger Red — Pantone 200 C */
+  --uwRedDark:      #9B0000;
+  --uwGrayDark:     #282728;   /* charcoal */
+  --uwGrayLight:    #e1e5e7;
+  --uwGrayLightest: #f3f3f3;
+  --uwWhite:        #ffffff;
+  --uwBlack:        #121212;   /* rich black — never pure #000 */
+  --uw-caption:     #545454;   /* figure captions / meta */
+  --uw-border:      #cfcfcf;
+  --uwDisplayFont:  "Red Hat Display", Arial, sans-serif;
+  --uwTextFont:     "Red Hat Text", Arial, sans-serif;
+}
+
+/* ---- Reveal base ------------------------------------------- */
+.reveal {
+  font-family: var(--uwTextFont);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--uwBlack);
+  letter-spacing: -0.005em;
+}
+.reveal-viewport { background: var(--uwWhite); }
+.reveal .slides { text-align: left; }
+
+.reveal .slides section {
+  height: 100%;
+  padding: 0;
+  top: 0 !important;        /* full-bleed layouts position their own content */
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: var(--uwDisplayFont);
+  color: var(--uwBlack);
+  font-weight: 700;
+  line-height: 1.08;
+  margin: 0;
+  text-transform: none;     /* sentence case — never ALL CAPS */
+  letter-spacing: -0.015em;
+}
+
+.reveal a { color: #036796; text-decoration: none; }
+.reveal strong { font-weight: 700; }
+.reveal em { font-style: italic; }
+.reveal sub, .reveal sup { font-size: 0.72em; line-height: 0; }
+
+/* ---- The mini-bar: the signature UW brand device ----------- */
+.uw-mini-bar {
+  display: block;
+  width: 2.2em;
+  height: 0.28em;
+  min-height: 5px;
+  background: var(--uwRed);
+  border-radius: 0;          /* square corners — intentional shape */
+  margin: 0 0 0.55em 0;
+}
+
+/* =============================================================
+   Shared content-slide chrome (Title & Content, Title Only)
+   ============================================================= */
+.uw-slide {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 5.0% 4.2% 4.2% 4.2%;
+  display: flex;
+  flex-direction: column;
+}
+.uw-slide > .uw-title {
+  font-size: 1.58rem;
+  margin-bottom: 0.1em;
+}
+.uw-slide .uw-titleblock { margin-bottom: 0.55em; }
+.uw-slide .uw-titleblock .uw-mini-bar { margin-top: 0.32em; margin-bottom: 0; }
+
+/* Body bullet lists */
+.reveal .uw-body {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.06rem;
+  line-height: 1.34;
+}
+.reveal .uw-body > li {
+  position: relative;
+  padding-left: 1.15em;
+  margin: 0 0 0.62em 0;
+}
+.reveal .uw-body > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 0.42em;
+  height: 0.42em;
+  background: var(--uwRed);
+  border-radius: 0;
+}
+.reveal .uw-body .uw-sub {
+  list-style: none;
+  margin: 0.4em 0 0 0.2em;
+  padding: 0;
+  font-size: 0.94em;
+  color: #333;
+}
+.reveal .uw-body .uw-sub > li {
+  position: relative;
+  padding-left: 1.1em;
+  margin: 0 0 0.3em 0;
+}
+.reveal .uw-body .uw-sub > li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  top: -0.02em;
+  color: var(--uwRed);
+  font-weight: 700;
+}
+
+/* Red "punchline" callout pinned to the bottom of a slide */
+.uw-callout {
+  margin-top: auto;
+  color: var(--uwRed);
+  font-family: var(--uwDisplayFont);
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.18;
+  padding-top: 0.5em;
+}
+.uw-callout.uw-callout-text { font-family: var(--uwTextFont); }
+
+/* Eyebrow / sub-heading used mid-slide (Part 1 — …, Natural testbeds:) */
+.uw-eyebrow {
+  color: var(--uwRed);
+  font-family: var(--uwDisplayFont);
+  font-weight: 700;
+  font-size: 1.0rem;
+  margin: 0.15em 0 0.15em 0;
+}
+.uw-note {
+  font-size: 0.92rem;
+  color: var(--uwBlack);
+  margin: 0 0 0.55em 1.1em;
+  line-height: 1.3;
+}
+.uw-note .ref { color: var(--uw-caption); }
+
+/* =============================================================
+   Title-Only layout: figure + side notes
+   ============================================================= */
+.uw-figrow {
+  display: flex;
+  gap: 3%;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+.uw-figrow.stack { flex-direction: column; align-items: stretch; gap: 1.2%; }
+.uw-figrow .uw-fig {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.uw-figrow .uw-fig img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.uw-figrow .uw-fig.wide img { width: 100%; }
+.uw-figrow .uw-notes { display: flex; flex-direction: column; justify-content: center; }
+.uw-figrow .uw-notes .uw-body { font-size: 0.92rem; line-height: 1.3; }
+.uw-figrow .uw-notes .uw-body > li { margin-bottom: 0.7em; }
+.uw-figrow .uw-notes .uw-body .em-red { color: var(--uwRed); font-weight: 700; }
+
+.uw-caption {
+  font-size: 0.6rem;
+  color: var(--uw-caption);
+  margin-top: 0.5em;
+}
+
+/* =============================================================
+   Title slide (cover + closing)
+   ============================================================= */
+.uw-cover {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 26% 5% 6% 5%;
+  display: flex;
+  flex-direction: column;
+}
+.uw-topband {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 7%;
+  background: var(--uwRed);
+}
+.uw-cover .uw-cover-title {
+  font-size: 2.05rem;
+  line-height: 1.07;
+  max-width: 92%;
+}
+.uw-cover .uw-mini-bar { width: 2.6em; height: 0.3em; margin-top: 0.5em; }
+.uw-cover .uw-cover-meta { margin-top: auto; }
+.uw-cover .name {
+  font-family: var(--uwDisplayFont);
+  color: var(--uwRed);
+  font-weight: 700;
+  font-size: 1.18rem;
+}
+.uw-cover .affil { color: var(--uw-caption); font-size: 0.82rem; margin-top: 0.15em; }
+.uw-cover .venue { color: var(--uwBlack); font-weight: 700; font-size: 0.82rem; margin-top: 0.55em; }
+.uw-cover .refs { color: var(--uw-caption); font-size: 0.72rem; margin-top: 0.2em; letter-spacing: 0.01em; }
+
+/* Closing variant */
+.uw-cover.uw-closing { padding-top: 22%; }
+.uw-cover .questions {
+  font-family: var(--uwDisplayFont);
+  color: var(--uwRed);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-top: 0.4em;
+}
+
+/* Crest in the corner of cover slides */
+.uw-crest {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  height: 22%;
+  opacity: 0.96;
+}
+
+/* =============================================================
+   Section divider slide
+   ============================================================= */
+.uw-section {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 0 6% 0 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--uwWhite);
+}
+.uw-section .uw-sideband {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 2.6%;
+  background: var(--uwRed);
+}
+.uw-section .uw-kicker {
+  font-family: var(--uwDisplayFont);
+  font-weight: 700;
+  color: var(--uwRed);
+  font-size: 2.6rem;
+  line-height: 1.02;
+}
+.uw-section .uw-mini-bar { width: 2.4em; height: 0.32em; margin: 0.5em 0 0.5em 0; }
+.uw-section .uw-section-sub {
+  font-size: 1.18rem;
+  color: var(--uwBlack);
+  max-width: 80%;
+  line-height: 1.32;
+}
+.uw-section .uw-section-sub .ref { color: var(--uw-caption); }
+
+/* =============================================================
+   Slide-number + footer crest watermark on content slides
+   ============================================================= */
+.reveal .slide-number {
+  font-family: var(--uwTextFont);
+  font-size: 16px;
+  color: var(--uw-caption);
+  background: none;
+  right: 14px; bottom: 10px;
+}
+
+/* Progress bar in Badger Red */
+.reveal .progress { color: var(--uwRed); height: 4px; }
+
+/* Print / PDF tweaks */
+@media print {
+  .uw-topband, .uw-section .uw-sideband, .uw-mini-bar,
+  .uw-body > li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
