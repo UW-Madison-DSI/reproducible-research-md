@@ -293,6 +293,12 @@
 /* Progress bar in Badger Red */
 .reveal .progress { color: var(--uwRed); height: 4px; }
 
+/* Density utility for slides with a lot of content (mirrors Quarto's
+   .smaller, scoped to our own wrapper since section-level classes are
+   no longer used for slide layout). */
+.uw-slide.smaller,
+.uw-slide.smaller .uw-body { font-size: 0.82em; }
+
 /* Print / PDF tweaks */
 @media print {
   .uw-topband, .uw-section .uw-sideband, .uw-mini-bar,

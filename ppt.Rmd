@@ -1,10 +1,11 @@
 ---
-title: "Reproducible Research"
-subtitle: "Quarto and MyST Markdown"
+pagetitle: "Reproducible Research"
 author: "Maria Oros"
 format:
   revealjs:
-    theme: sky
+    css:
+      - css/colors_and_type.css
+      - css/uw-reveal.css
     transition: slide
     slide-number: true
     chalkboard: true
@@ -14,7 +15,25 @@ execute:
   echo: true
 ---
 
-## Agenda
+::: {.uw-cover}
+<div class="uw-topband"></div>
+
+<h1 class="uw-cover-title">Reproducible Research</h1>
+<div class="uw-mini-bar"></div>
+<p class="uw-note" style="margin-top:0.6em;">Quarto and MyST Markdown</p>
+
+::: {.uw-cover-meta}
+<p class="name">Maria Oros</p>
+:::
+
+<img class="uw-crest" src="assets/brand/uw-crest-1color.svg" alt="">
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">Agenda</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.incremental}
 - **The problem**: reproducibility crisis & core concepts
@@ -24,10 +43,22 @@ execute:
 - **Reproducible environments**: renv, Docker, archiving
 - **Best practices** & getting started
 :::
+:::
 
 ---
 
-## What is Reproducible Research? {.smaller}
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">The Problem</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">The reproducibility crisis, and the core concepts behind fixing it</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">What is Reproducible Research?</h2>
+<div class="uw-mini-bar"></div>
 
 The ability to recreate scientific findings using:
 
@@ -41,10 +72,13 @@ The ability to recreate scientific findings using:
 ::: {.notes}
 Reproducibility is fundamental to the scientific method
 :::
+:::
 
 ---
 
-## Why Reproducibility Matters
+::: {.uw-slide}
+<h2 class="uw-title">Why Reproducibility Matters</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -71,10 +105,13 @@ Reproducibility is fundamental to the scientific method
 - Visible decisions
 :::
 :::
+:::
 
 ---
 
-## The Reproducibility Crisis {.smaller}
+::: {.uw-slide}
+<h2 class="uw-title">The Reproducibility Crisis</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="55%"}
@@ -98,10 +135,13 @@ Irreproducible preclinical research alone is estimated to cost
 ::: {.notes}
 Baker, M. (2016). "1,500 scientists lift the lid on reproducibility." Nature.
 :::
+:::
 
 ---
 
-## Reproducible vs. Replicable {.smaller}
+::: {.uw-slide}
+<h2 class="uw-title">Reproducible vs. Replicable</h2>
+<div class="uw-mini-bar"></div>
 
 | Term | Same data? | Same code? | Question answered |
 |------|:---:|:---:|------|
@@ -113,10 +153,22 @@ Baker, M. (2016). "1,500 scientists lift the lid on reproducibility." Nature.
 ::: {.callout-note}
 This deck focuses on **reproducibility** — the foundation the others build on.
 :::
+:::
 
 ---
 
-## Literate Programming {.smaller}
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">Literate Programming</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">Code and narrative living in one document</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">Literate Programming</h2>
+<div class="uw-mini-bar"></div>
 
 > "Instead of instructing a computer what to do, let us concentrate on
 > explaining to humans what we want the computer to do." — Donald Knuth (1984)
@@ -138,10 +190,22 @@ This deck focuses on **reproducibility** — the foundation the others build on.
 - Powers R Markdown, Quarto, MyST & Jupyter
 :::
 :::
+:::
 
 ---
 
-## What is Quarto?
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">Quarto</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">Language-agnostic scientific publishing</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">What is Quarto?</h2>
+<div class="uw-mini-bar"></div>
 
 > Next-generation scientific publishing system
 
@@ -150,10 +214,13 @@ This deck focuses on **reproducibility** — the foundation the others build on.
 - Multiple output formats: HTML, PDF, Word, presentations
 - Built-in support for citations and cross-references
 - Developed by Posit
+:::
 
 ---
 
-## Quarto Example: R {auto-animate="true"}
+::: {.uw-slide}
+<h2 class="uw-title">Quarto Example: R</h2>
+<div class="uw-mini-bar"></div>
 
 ```r
 library(ggplot2)
@@ -166,10 +233,13 @@ data <- data.frame(x = 1:10, y = (1:10)^2)
 ggplot(data, aes(x = x, y = y)) +
   geom_line() + labs(title = "Quadratic Growth")
 ```
+:::
 
 ---
 
-## Live R Code: Base Graphics
+::: {.uw-slide}
+<h2 class="uw-title">Live R Code: Base Graphics</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -188,10 +258,13 @@ plot(x, y, type = "l", lwd = 2, col = "blue",
      xlab = "x", ylab = "sin(x)")
 grid()
 ```
+:::
 
 ---
 
-## Quarto Example: ggplot2
+::: {.uw-slide}
+<h2 class="uw-title">Quarto Example: ggplot2</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -217,10 +290,13 @@ ggplot(data, aes(x = x, y = y)) +
        x = "Index", y = "Value") +
   theme(plot.title = element_text(hjust = 0.5, face = "bold"))
 ```
+:::
 
 ---
 
-## Interactive Plot with plotly
+::: {.uw-slide}
+<h2 class="uw-title">Interactive Plot with plotly</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -243,10 +319,13 @@ plot_ly(data, x = ~x, y = ~y, type = 'scatter', mode = 'lines+markers',
          xaxis = list(title = "Step"),
          yaxis = list(title = "Value"))
 ```
+:::
 
 ---
 
-## Quarto Key Features
+::: {.uw-slide}
+<h2 class="uw-title">Quarto Key Features</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.panel-tabset}
 ### Unified Syntax
@@ -264,10 +343,22 @@ Execute code in multiple engines
 ### Themes
 Customizable templates and styling
 :::
+:::
 
 ---
 
-## What is MyST Markdown?
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">MyST Markdown</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">Interactive books, Jupyter, and mybinder</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">What is MyST Markdown?</h2>
+<div class="uw-mini-bar"></div>
 
 **M**arkedly **S**tructured **T**ext
 
@@ -276,10 +367,13 @@ Customizable templates and styling
 - Part of the Jupyter ecosystem (Jupyter Book, Sphinx)
 - Supports roles and directives from reStructuredText
 - Excellent for creating interactive books
+:::
 
 ---
 
-## MyST Markdown Syntax
+::: {.uw-slide}
+<h2 class="uw-title">MyST Markdown Syntax</h2>
+<div class="uw-mini-bar"></div>
 
 Here is example MyST syntax:
 
@@ -295,10 +389,13 @@ Here is example MyST syntax:
     :class: tip
     Remember to document your work!
     :::
+:::
 
 ---
 
-## MyST Features
+::: {.uw-slide}
+<h2 class="uw-title">MyST Features</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -334,10 +431,13 @@ Here is example MyST syntax:
     mybinder integration
 :::
 :::
+:::
 
 ---
 
-## MyST + Jupyter Book Power
+::: {.uw-slide}
+<h2 class="uw-title">MyST + Jupyter Book Power</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -362,10 +462,13 @@ Here is example MyST syntax:
 ::: {.callout-note}
 MyST excels at creating interactive documentation from Jupyter notebooks
 :::
+:::
 
 ---
 
-## What is mybinder?
+::: {.uw-slide}
+<h2 class="uw-title">What is mybinder?</h2>
+<div class="uw-mini-bar"></div>
 
 **mybinder.org**: Turn Git repositories into interactive notebooks
 
@@ -379,10 +482,13 @@ MyST excels at creating interactive documentation from Jupyter notebooks
 ::: {.fragment}
 Perfect combination: **MyST Markdown** + **mybinder** = Interactive, reproducible documentation
 :::
+:::
 
 ---
 
-## Why MyST + mybinder? {.smaller}
+::: {.uw-slide}
+<h2 class="uw-title">Why MyST + mybinder?</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -407,10 +513,13 @@ Perfect combination: **MyST Markdown** + **mybinder** = Interactive, reproducibl
 ::: {.callout-tip}
 Users can immediately interact with your analysis without any setup!
 :::
+:::
 
 ---
 
-## Real World Example: UW-Madison Survey
+::: {.uw-slide}
+<h2 class="uw-title">Real World Example: UW-Madison Survey</h2>
+<div class="uw-mini-bar"></div>
 
 [**Open Source Survey Results**](https://github.com/UW-Madison-DSI/open_source_survey_results_myst)
 
@@ -435,10 +544,13 @@ Users can immediately interact with your analysis without any setup!
 - Binder for compute
 :::
 :::
+:::
 
 ---
 
-## UW-Madison Example Structure
+::: {.uw-slide}
+<h2 class="uw-title">UW-Madison Example Structure</h2>
+<div class="uw-mini-bar"></div>
 
 ```bash
 open_source_survey_results_myst/
@@ -456,10 +568,13 @@ open_source_survey_results_myst/
 ::: {.fragment}
 **Key insight**: Everything needed for reproduction in one repo!
 :::
+:::
 
 ---
 
-## mybinder Configuration Files
+::: {.uw-slide}
+<h2 class="uw-title">mybinder Configuration Files</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.panel-tabset}
 ### requirements.txt
@@ -488,10 +603,13 @@ dependencies:
 r-2023-01-01
 ```
 :::
+:::
 
 ---
 
-## Adding mybinder to Your Project
+::: {.uw-slide}
+<h2 class="uw-title">Adding mybinder to Your Project</h2>
+<div class="uw-mini-bar"></div>
 
 **1. Add a badge to README.md:**
 
@@ -509,10 +627,13 @@ r-2023-01-01
 ::: {.callout-tip}
 mybinder automatically detects configuration files and builds your environment
 :::
+:::
 
 ---
 
-## MyST + mybinder Workflow {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">MyST + mybinder Workflow</h2>
+<div class="uw-mini-bar"></div>
 
 ```{mermaid}
 flowchart TB
@@ -522,16 +643,19 @@ flowchart TB
     B --> E[mybinder Badge]
     E --> F[Click Badge]
     F --> G[Live Interactive Session]
-    
+
     style D fill:#90EE90
     style G fill:#87CEEB
 ```
 
 **Result**: Documentation that readers can **read** OR **execute**!
+:::
 
 ---
 
-## Live Demo: Survey Analysis Example
+::: {.uw-slide}
+<h2 class="uw-title">Live Demo: Survey Analysis Example</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -556,10 +680,13 @@ flowchart TB
 ::: {.callout-important}
 Same environment, guaranteed reproducibility!
 :::
+:::
 
 ---
 
-## MyST Advantages for Research
+::: {.uw-slide}
+<h2 class="uw-title">MyST Advantages for Research</h2>
+<div class="uw-mini-bar"></div>
 
 1. **Jupyter-native**: Notebooks are first-class citizens
 2. **Rich directives**: Admonitions, grids, cards, tabs
@@ -568,10 +695,13 @@ Same environment, guaranteed reproducibility!
 5. **mybinder integration**: One-click interactive sessions
 6. **Version control friendly**: Plain text format
 7. **Multiple outputs**: HTML books, PDFs, slides
+:::
 
 ---
 
-## Example: MyST Document Header
+::: {.uw-slide}
+<h2 class="uw-title">Example: MyST Document Header</h2>
+<div class="uw-mini-bar"></div>
 
 ```yaml
 ---
@@ -587,10 +717,13 @@ kernelspec:
 ```
 
 This allows MyST to execute code blocks automatically!
+:::
 
 ---
 
-## Example: Executable MyST Block
+::: {.uw-slide}
+<h2 class="uw-title">Example: Executable MyST Block</h2>
+<div class="uw-mini-bar"></div>
 
 ```markdown
 # Analysis Results
@@ -621,10 +754,13 @@ The plot above shows clear trends in responses.
 | **Learning Curve** | Moderate | Steeper |
 | **Best For** | Reports, websites, presentations | Books, documentation |
 | **Interactive** | Yes (Observable, Shiny) | Yes (Jupyter widgets) |
+:::
 
 ---
 
-## Comparison: Quarto vs MyST
+::: {.uw-slide}
+<h2 class="uw-title">Comparison: Quarto vs MyST</h2>
+<div class="uw-mini-bar"></div>
 
 | Feature | Quarto | MyST Markdown |
 |---------|--------|---------------|
@@ -635,10 +771,13 @@ The plot above shows clear trends in responses.
 | **Best For** | Reports, websites, presentations | Books, documentation |
 | **Interactive** | Yes (Observable, Shiny) | Yes (Jupyter widgets) |
 | **mybinder** | Manual setup | Native integration |
+:::
 
 ---
 
-## When to Use MyST? {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">When to Use MyST?</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -667,23 +806,38 @@ The plot above shows clear trends in responses.
 - **Tutorial websites** with interactive exercises
 :::
 :::
+:::
 
 ---
 
-## MyST Best Practices
+::: {.uw-slide}
+<h2 class="uw-title">MyST Best Practices</h2>
+<div class="uw-mini-bar"></div>
 
 1. **Use Jupyter notebooks** as source files
-2. **Add mybinder badge** for interactivity  
+2. **Add mybinder badge** for interactivity
 3. **Document dependencies** clearly (requirements.txt)
 4. **Cache outputs** for faster builds
 5. **Use directives** for better formatting
 6. **Cross-reference** figures and tables
 7. **Version control** everything (including data when possible)
 8. **Test mybinder link** before sharing
+:::
 
 ---
 
-## Getting Started: Quarto
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">Getting Started</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">Installing and using Quarto and MyST</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">Getting Started: Quarto</h2>
+<div class="uw-mini-bar"></div>
 
 **Installation:**
 ```bash
@@ -703,10 +857,13 @@ quarto render document.qmd
 ```bash
 quarto preview document.qmd
 ```
+:::
 
 ---
 
-## Getting Started: MyST
+::: {.uw-slide}
+<h2 class="uw-title">Getting Started: MyST</h2>
+<div class="uw-mini-bar"></div>
 
 **Installation:**
 ```bash
@@ -724,23 +881,38 @@ jupyter-book build .
 ```bash
 pip install myst-nb
 ```
+:::
 
 ---
 
-## Best Practices for Reproducibility
+::: {.uw-section}
+<div class="uw-sideband"></div>
+<h2 class="uw-kicker">Reproducible Environments</h2>
+<div class="uw-mini-bar"></div>
+<p class="uw-section-sub">renv, Docker, and archiving for the long run — plus best practices</p>
+:::
+
+---
+
+::: {.uw-slide}
+<h2 class="uw-title">Best Practices for Reproducibility</h2>
+<div class="uw-mini-bar"></div>
 
 1. **Version Control**: Use Git to track all changes
-2. **Environment Management**: 
+2. **Environment Management**:
    - Python: requirements.txt, conda env export
    - R: renv::snapshot(), renv.lock
 3. **Clear Documentation**: Explain what, why, and how
 4. **Modular Code**: Separate data, analysis, visualization
 5. **Data Provenance**: Record sources and transformations
 6. **Automated Workflows**: Use targets, make, drake
+:::
 
 ---
 
-## Example: Complete Workflow
+::: {.uw-slide}
+<h2 class="uw-title">Example: Complete Workflow</h2>
+<div class="uw-mini-bar"></div>
 
 ```{mermaid}
 flowchart LR
@@ -754,10 +926,13 @@ flowchart LR
     style E fill:#90EE90
     style A fill:#FFB6C1
 ```
+:::
 
 ---
 
-## Practical Example: Data Analysis {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">Practical Example: Data Analysis</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -804,10 +979,13 @@ p2 <- ggplot(df, aes(x = Method, y = Errors, fill = Method)) +
 
 p1 + p2
 ```
+:::
 
 ---
 
-## Working with tidyverse
+::: {.uw-slide}
+<h2 class="uw-title">Working with tidyverse</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -829,10 +1007,13 @@ mtcars %>%
   ) %>%
   kable(digits = 2, caption = "Summary Statistics by Cylinder")
 ```
+:::
 
 ---
 
-## Statistical Modeling Example
+::: {.uw-slide}
+<h2 class="uw-title">Statistical Modeling Example</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -844,10 +1025,13 @@ model <- lm(mpg ~ wt + hp, data = mtcars)
 # Display summary
 summary(model)
 ```
+:::
 
 ---
 
-## Model Diagnostics Plot
+::: {.uw-slide}
+<h2 class="uw-title">Model Diagnostics Plot</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -859,10 +1043,13 @@ summary(model)
 par(mfrow = c(2, 2))
 plot(model)
 ```
+:::
 
 ---
 
-## Using renv for Reproducibility
+::: {.uw-slide}
+<h2 class="uw-title">Using renv for Reproducibility</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| eval: false
@@ -886,10 +1073,13 @@ renv::restore()
 ## Best Practice
 Always use renv to manage R package dependencies for reproducible research!
 :::
+:::
 
 ---
 
-## Containerization with Docker {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">Containerization with Docker</h2>
+<div class="uw-mini-bar"></div>
 
 Capture the *entire* computational environment — OS, system libraries,
 language, and packages — in a single portable image.
@@ -910,10 +1100,13 @@ CMD ["Rscript", "analysis.R"]
 `renv` pins packages; Docker pins *everything else*. Together they make an
 analysis reproducible years later, on any machine.
 :::
+:::
 
 ---
 
-## Archiving & Citable Research {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">Archiving & Citable Research</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -937,10 +1130,13 @@ analysis reproducible years later, on any machine.
 ::: {.callout-note}
 GitHub is for collaboration; an archive with a DOI is for *permanence*.
 :::
+:::
 
 ---
 
-## Creating Tables with gt
+::: {.uw-slide}
+<h2 class="uw-title">Creating Tables with gt</h2>
+<div class="uw-mini-bar"></div>
 
 ```{r}
 #| echo: true
@@ -974,10 +1170,13 @@ mtcars %>%
     table.font.size = 12
   )
 ```
+:::
 
 ---
 
-## Resources {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">Resources</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -1007,10 +1206,13 @@ mtcars %>%
 - [renv](https://rstudio.github.io/renv/)
 :::
 :::
+:::
 
 ---
 
-## Start Small: The Adoption Ladder {.smaller}
+::: {.uw-slide .smaller}
+<h2 class="uw-title">Start Small: The Adoption Ladder</h2>
+<div class="uw-mini-bar"></div>
 
 You don't need everything at once — each rung is useful on its own and takes minutes.
 
@@ -1024,10 +1226,13 @@ You don't need everything at once — each rung is useful on its own and takes m
 ::: {.callout-tip}
 The value compounds, but so does the effort — stop at whatever rung fits your needs.
 :::
+:::
 
 ---
 
-## Key Takeaways
+::: {.uw-slide}
+<h2 class="uw-title">Key Takeaways</h2>
+<div class="uw-mini-bar"></div>
 
 ::: {.incremental}
 1. **Reproducibility is the foundation** of credible science
@@ -1037,23 +1242,27 @@ The value compounds, but so does the effort — stop at whatever rung fits your 
 5. **mybinder** lets anyone run your work with zero setup
 6. **Archive with a DOI** to make research permanent and citable
 :::
+:::
 
 ---
 
-## {background-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200" background-opacity="0.3"}
+::: {.uw-cover .uw-closing}
+<div class="uw-topband"></div>
 
-::: {.r-fit-text}
-**Thank You!**
+<h1 class="uw-cover-title">Thank You!</h1>
+<div class="uw-mini-bar"></div>
+<p class="questions">Questions?</p>
 
-Questions?
+::: {.uw-cover-meta}
+<blockquote>
+"Reproducible research is not just good practice—it's the foundation of credible science."
+</blockquote>
+<p class="venue">Try it out: check out the <a href="https://github.com/UW-Madison-DSI/open_source_survey_results_myst">UW-Madison example</a> and click the mybinder badge!</p>
 :::
 
-::: {.fragment}
-> "Reproducible research is not just good practice—it's the foundation of credible science."
-
-**Try it out**: Check out the [UW-Madison example](https://github.com/UW-Madison-DSI/open_source_survey_results_myst) and click the mybinder badge!
-:::
+<img class="uw-crest" src="assets/brand/uw-crest-1color.svg" alt="">
 
 ::: {.notes}
 Embrace reproducible research: Your future self will thank you!
+:::
 :::
